@@ -12,5 +12,10 @@ function calculateEMI() {
     var emi = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTenure)) /
               (Math.pow(1 + monthlyInterestRate, loanTenure) - 1);
 
-    document.getElementById("result").innerHTML = "Your Monthly EMI: ₹" + emi.toFixed(2);
+    var totalPayment = emi * loanTenure;
+    var totalInterest = totalPayment - loanAmount;
+
+    document.getElementById("result").innerHTML = "Your Monthly EMI: ₹" + emi.toFixed(2) +
+                                                  "<br>Total Payment: ₹" + totalPayment.toFixed(2) +
+                                                  "<br>Total Interest Paid: ₹" + totalInterest.toFixed(2);
 }
